@@ -1,0 +1,9 @@
+# upstream sparse clone (translation source of record)
+.git-upstream/
+site-zh/
+__pycache__/
+.venv/
+*.pyc
+.DS_Store
+.mypy_cache/
+.tmp_schema/

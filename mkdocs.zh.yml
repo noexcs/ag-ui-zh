@@ -1,0 +1,116 @@
+site_name: AG-UI Protocol 中文文档
+site_description: AG-UI（Agent-User Interaction Protocol）1.0 官方规范简体中文翻译版。AG-UI 是标准化智能体与面向用户应用之间通信的开放协议：一个请求进入，一条有序的类型化事件流输出，承载用户可见的全部智能体行为——文本、工具调用、推理、共享状态与进度。
+repo_url: https://github.com/ag-ui-protocol/ag-ui
+site_url: https://noexcs.github.io/ag-ui-zh/
+edit_uri: ''
+strict: false
+use_directory_urls: false
+docs_dir: docs-zh
+site_dir: site-zh
+
+nav:
+  - 规范:
+    - 规范: 1.0/index.md
+    - 主要变更: 1.0/changelog.md
+    - 架构: 1.0/architecture.md
+  - 基础协议:
+    - 事件模型: 1.0/basic/index.md
+    - 运行输入: 1.0/basic/run-input.md
+    - 元数据: 1.0/basic/metadata.md
+    - 能力: 1.0/basic/capabilities.md
+    - 事件模式:
+      - 事件模式: 1.0/basic/patterns/index.md
+      - 流式消息: 1.0/basic/patterns/streaming.md
+      - 快照与增量: 1.0/basic/patterns/snapshots.md
+      - 中断与恢复: 1.0/basic/patterns/interrupt-resume.md
+    - 传输:
+      - 传输: 1.0/basic/transports/index.md
+      - HTTP + 服务器发送事件: 1.0/basic/transports/http-sse.md
+      - HTTP + Protobuf: 1.0/basic/transports/http-protobuf.md
+    - 处理模型: 1.0/basic/processing.md
+    - 版本与兼容性: 1.0/basic/versioning.md
+  - 事件流:
+    - 事件流: 1.0/events/index.md
+    - 运行与步骤: 1.0/events/lifecycle.md
+    - 文本消息: 1.0/events/text-messages.md
+    - 工具调用: 1.0/events/tool-calls.md
+    - 推理: 1.0/events/reasoning.md
+    - 状态: 1.0/events/state.md
+    - 活动: 1.0/events/activity.md
+    - 子智能体: 1.0/events/subagents.md
+    - 原始与自定义事件: 1.0/events/passthrough.md
+  - 参考:
+    - Schema 文件: 1.0/schema-files.md
+    - Schema 参考: 1.0/schema.md
+
+theme:
+  name: material
+  language: zh
+  logo: img/logo.svg
+  font: false
+  code_font: false
+  palette:
+    - scheme: default
+      primary: black
+      accent: black
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+    - scheme: slate
+      primary: black
+      accent: black
+      toggle:
+        icon: material/brightness-4
+        name: 切换到浅色模式
+  features:
+    - navigation.indexes
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - toc.follow
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ag-ui-protocol/ag-ui
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/Jd3FzfdJa8
+
+extra_css:
+  - css/custom.css
+
+plugins:
+  - search:
+      separator: '[\s\-_:/,.\[\]\(\)\{\}<>"]+'
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: false
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path:
+        - !relative $config_dir
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:main.mermaid_fence
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - pymdownx.caret
+  - pymdownx.tilde
+
+copyright: 原文 © AG-UI Protocol（MIT 许可，docs © 2025 Tawkit Inc.、Markus Ecker）· 本页面为社区简体中文翻译

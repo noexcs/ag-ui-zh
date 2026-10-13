@@ -1,0 +1,462 @@
+/* ==========================================================================
+   AG-UI Protocol 中文文档 — 复刻 docs.ag-ui.com（Mintlify "aspen"）风格
+   黑白极简：白底黑字 / 深底 #0e0e10，Inter 正文 + 等宽代码
+   原站 token（实测）：--primary 9 9 11 (#09090b)，light bg #FAFAFA，
+   dark bg rgb(14,14,16)；Inter 正文；paperMono（等宽回退栈）。
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600&display=swap');
+
+/* ---------- Tokens — Light (default) ---------- */
+:root {
+  --agui-bg: #ffffff;
+  --agui-bg-soft: #fafafa;
+  --agui-bg-inset: #f4f4f5;
+  --agui-border: #e4e4e7;
+  --agui-border-soft: #f0f0f1;
+  --agui-text: #09090b;
+  --agui-text-muted: #52525b;
+  --agui-text-dim: #a1a1aa;
+  --agui-accent: #09090b;
+  --agui-accent-contrast: #ffffff;
+  --agui-header-bg: rgba(255, 255, 255, 0.85);
+  --agui-code-bg: rgba(9, 9, 11, 0.05);
+  --agui-block-bg: #09090b;
+  --agui-block-fg: #fafafa;
+
+  --font-body: "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* MkDocs Material 覆盖 */
+  --md-primary-fg-color: var(--agui-accent);
+  --md-primary-fg-color--light: var(--agui-accent);
+  --md-primary-fg-color--dark: var(--agui-accent);
+  --md-accent-fg-color: var(--agui-accent);
+  --md-default-bg-color: var(--agui-bg);
+  --md-default-fg-color: var(--agui-text);
+  --md-default-fg-color--light: var(--agui-text-muted);
+  --md-default-fg-color--lighter: var(--agui-text-dim);
+  --md-default-fg-color--lightest: var(--agui-border);
+  --md-typeset-a-color: var(--agui-text);
+  --md-footer-bg-color: var(--agui-bg);
+  --md-footer-bg-color--dark: var(--agui-bg-soft);
+  --md-footer-fg-color: var(--agui-text-muted);
+  --md-footer-fg-color--light: var(--agui-text-dim);
+  --md-typeset-pre-color: var(--agui-block-fg);
+  --md-typeset-pre-bg-color: var(--agui-block-bg);
+  --md-code-bg-color: var(--agui-code-bg);
+  --md-code-fg-color: var(--agui-text);
+  --md-code-link-color: var(--agui-text);
+  --md-typeset-code-color: var(--agui-text);
+  --md-typeset-code-bg-color: var(--agui-code-bg);
+  --md-typeset-code-font-size: 0.85em;
+}
+
+/* ---------- Tokens — Dark (slate) ---------- */
+[data-md-color-scheme="slate"] {
+  --agui-bg: #0e0e10;
+  --agui-bg-soft: #141416;
+  --agui-bg-inset: #1a1a1d;
+  --agui-border: #26262a;
+  --agui-border-soft: #1f1f22;
+  --agui-text: #dedede;
+  --agui-text-muted: #a1a1aa;
+  --agui-text-dim: #6b6b72;
+  --agui-accent: #fafafa;
+  --agui-accent-contrast: #09090b;
+  --agui-header-bg: rgba(14, 14, 16, 0.85);
+  --agui-code-bg: rgba(255, 255, 255, 0.06);
+  --agui-block-bg: #09090b;
+  --md-default-bg-color: var(--agui-bg);
+  --md-default-fg-color: var(--agui-text);
+  --md-default-fg-color--light: var(--agui-text-muted);
+  --md-default-fg-color--lighter: var(--agui-text-dim);
+  --md-footer-bg-color: var(--agui-bg);
+  --md-footer-bg-color--dark: var(--agui-bg-soft);
+  --md-typeset-pre-bg-color: var(--agui-block-bg);
+  --md-typeset-pre-color: var(--agui-block-fg);
+  --md-code-bg-color: var(--agui-code-bg);
+}
+
+/* ---------- 字体 ---------- */
+html {
+  font-family: var(--font-body);
+}
+.md-body,
+.md-typeset,
+.md-typeset a {
+  font-family: var(--font-body);
+}
+.md-typeset code,
+.md-typeset kbd,
+.md-typeset pre,
+.md-code {
+  font-family: var(--font-mono) !important;
+}
+/* Mermaid 需要与渲染宽度匹配的字体：用系统栈（与 main.py 的 fontFamily 一致） */
+:root {
+  --md-mermaid-font-family: -apple-system, "Segoe UI", system-ui, Roboto,
+    Helvetica, Arial, sans-serif;
+}
+
+/* ---------- 页头 ---------- */
+.md-header,
+[data-md-color-primary] .md-header {
+  background-color: var(--agui-header-bg);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--agui-border-soft);
+  color: var(--md-default-fg-color);
+}
+[data-md-color-primary] .md-header .md-header__button,
+[data-md-color-primary] .md-header .md-header__title,
+[data-md-color-primary] .md-header .md-search__input,
+[data-md-color-primary] .md-header .md-search__form .material-icon,
+[data-md-color-primary] .md-header .md-search__icon {
+  color: var(--md-default-fg-color);
+}
+[data-md-color-primary] .md-header .md-search__input {
+  background-color: transparent;
+}
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 1.35rem;
+}
+.md-header__button.md-logo {
+  color: var(--md-default-fg-color);
+}
+.md-header__topic {
+  font-weight: 500;
+}
+
+/* ---------- 布局 ---------- */
+.md-main__inner {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+.md-content__inner {
+  margin: auto;
+  max-width: 72rem;
+  padding: 0.6rem 1.2rem 4rem;
+}
+.md-typeset {
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+/* 正文列宽：原站内容约 672px */
+.md-typeset .md-typeset__container {
+  max-width: 42rem;
+  margin: 0;
+}
+
+/* ---------- 标题 ---------- */
+.md-typeset h1 {
+  font-size: 2.1rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-top: 1.4rem;
+}
+.md-typeset h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 2.4rem;
+  padding-bottom: 0.35rem;
+  border-bottom: none;
+}
+.md-typeset h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin-top: 1.8rem;
+}
+.md-typeset h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.md-typeset h1 + *, .md-typeset h2 + *, .md-typeset h3 + * {
+  margin-top: 0.9rem;
+}
+
+/* 页面 title 下方的 description（frontmatter description 由 Material 自动渲染为 lead） */
+.md-typeset .md-content__button {
+  display: none;
+}
+
+/* 代码标题（如 `metadata`） */
+.md-typeset h1 code, .md-typeset h2 code, .md-typeset h3 code, .md-typeset h4 code {
+  background: none;
+  padding: 0;
+  font-size: 0.92em;
+}
+
+/* ---------- 链接 ---------- */
+.md-typeset a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(128, 128, 138, 0.4);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s;
+}
+.md-typeset a:hover {
+  color: inherit;
+  text-decoration-color: currentColor;
+}
+/* 左侧/页内目录里高亮的是纯文字，不要下划线 */
+.md-nav__link--active {
+  color: var(--agui-text);
+}
+
+/* ---------- 侧边导航 ---------- */
+.md-sidebar--primary {
+  background-color: var(--agui-bg);
+  border-right: 1px solid var(--agui-border-soft);
+}
+.md-nav__item .md-nav__link {
+  color: var(--agui-text-muted);
+  font-size: 0.85rem;
+  font-weight: 450;
+  padding: 0.28rem 0;
+  border-radius: 0.45rem;
+  margin: 0 0.5rem;
+}
+.md-nav__item .md-nav__link:hover {
+  color: var(--agui-text);
+  background-color: var(--agui-bg-inset);
+}
+.md-nav__item--active > .md-nav__link,
+.md-nav__item .md-nav__link--active {
+  color: var(--agui-text);
+  font-weight: 550;
+  background-color: var(--agui-bg-inset);
+}
+/* 组标题（Specification / Base Protocol / Event Streams） */
+.md-nav__item--section > .md-nav__link,
+.md-nav__item--section > label > .md-nav__link {
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: var(--agui-text);
+  letter-spacing: 0.01em;
+  text-transform: none;
+  margin-top: 1.1rem;
+}
+/* 二级嵌套组（Event Patterns / Transports） */
+.md-nav__item .md-nav__item--section > .md-nav__link {
+  color: var(--agui-text-muted);
+  font-weight: 550;
+}
+.md-nav__source {
+  display: none;
+}
+
+/* 右侧 On this page */
+.md-sidebar--secondary .md-nav__title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--agui-text-dim);
+  text-transform: none;
+}
+.md-sidebar--secondary .md-nav__link {
+  color: var(--agui-text-muted);
+  font-size: 0.82rem;
+  font-weight: 450;
+}
+.md-sidebar--secondary .md-nav__link--active {
+  color: var(--agui-text);
+  font-weight: 550;
+  background: none;
+  box-shadow: none;
+}
+
+/* ---------- 行内代码 ---------- */
+.md-typeset code {
+  background-color: var(--agui-code-bg);
+  color: var(--agui-text);
+  font-size: 0.85em;
+  border-radius: 0.3rem;
+  padding: 0.14em 0.35em;
+  border: 1px solid var(--agui-border-soft);
+}
+.md-typeset a > code {
+  border-color: transparent;
+}
+
+/* ---------- 代码块 ---------- */
+.md-typeset pre {
+  background-color: var(--agui-block-bg) !important;
+  color: var(--agui-block-fg);
+  border-radius: 0.6rem;
+  padding: 1rem 0;
+  line-height: 1.55;
+  font-size: 0.82rem;
+  box-shadow: none;
+  border: none;
+}
+.md-typeset pre > code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  color: var(--agui-block-fg);
+}
+/* 代码块内代码字体色：浅色（原站代码块深底浅字） */
+.md-typeset pre code .highlight,
+.md-typeset pre code span {
+  color: #e4e4e7;
+}
+.md-typeset pre code .o, .md-typeset pre code .p { color: #8b8b93; }   /* 标点 */
+.md-typeset pre code .s, .md-typeset pre code .s1, .md-typeset pre code .s2 { color: #a5d6a7; } /* 字符串 */
+.md-typeset pre code .k, .md-typeset pre code .kd, .md-typeset pre code .kc { color: #c4b5fd; } /* 关键字 */
+.md-typeset pre code .na, .md-typeset pre code .nt { color: #90caf9; }  /* 名称/标签 */
+.md-typeset pre code .mi, .md-typeset pre code .mf { color: #f8c471; }  /* 数字 */
+.md-typeset pre code .c, .md-typeset pre code .c1 { color: #6b6b72; font-style: italic; } /* 注释 */
+
+/* 代码块语言标签（superfences） */
+.md-typeset .highlighttable {
+  background: none;
+  border: none;
+  margin: 0;
+}
+.file {
+  background-color: var(--agui-block-bg) !important;
+}
+.file-header {
+  background-color: #17171a !important;
+  border-bottom: 1px solid #26262a !important;
+}
+.file-header [data-mdx-snippet-name] {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #a1a1aa;
+}
+
+/* ---------- 表格 ---------- */
+.md-typeset table {
+  font-size: 0.84rem;
+}
+.md-typeset table th {
+  font-weight: 600;
+  color: var(--agui-text);
+  border-bottom: 2px solid var(--agui-text);
+}
+.md-typeset table td {
+  border-color: var(--agui-border-soft);
+}
+.md-typeset table tr:hover > td {
+  background-color: var(--agui-bg-inset);
+}
+
+/* ---------- 列表 ---------- */
+.md-typeset ul, .md-typeset ol {
+  padding-left: 1.4rem;
+}
+.md-typeset li {
+  margin: 0.28rem 0;
+}
+.md-typeset li > p {
+  margin: 0.4rem 0 0;
+}
+.md-typeset li::marker {
+  color: var(--agui-text-dim);
+}
+
+/* ---------- 引用块 / callout（Note 转换来的 :::: 块） ---------- */
+.md-typeset blockquote {
+  border-left: 3px solid var(--agui-text);
+  background: none;
+  color: var(--agui-text-muted);
+  margin: 1rem 0;
+  padding: 0.2rem 0 0.2rem 1rem;
+  font-size: 0.9rem;
+}
+/* 页面 lead（frontmatter description 渲染） */
+.md-typeset .lead {
+  color: var(--agui-text-muted);
+  font-size: 1.02rem;
+  margin: 0.6rem 0 1.8rem;
+}
+
+/* ---------- Mermaid 图 ---------- */
+.md-typeset .mermaid {
+  background: none;
+  text-align: center;
+  padding: 1.2rem 0;
+  margin: 1.2rem 0;
+  border: 1px solid var(--agui-border-soft);
+  border-radius: 0.6rem;
+}
+.md-typeset .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+[data-md-color-scheme="slate"] .md-typeset .mermaid {
+  background: var(--agui-bg-soft);
+}
+/* 图内文字颜色跟随主题 */
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg text,
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .edgeLabel {
+  fill: #dedede;
+}
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .node rect,
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .node polygon,
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .node circle {
+  stroke: #3f3f46;
+  fill: #17171a;
+}
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .cluster rect {
+  fill: #141416;
+  stroke: #26262a;
+}
+[data-md-color-scheme="slate"] .md-typeset .mermaid svg .edgePath .path {
+  stroke: #52525b;
+}
+
+/* ---------- 卡片列表（Card 转换来的 - [标题](x) — 描述） ---------- */
+.md-typeset li > a::after {
+  content: "";
+}
+
+/* ---------- 页脚 ---------- */
+.md-footer {
+  border-top: 1px solid var(--agui-border-soft);
+  background-color: var(--agui-bg);
+}
+.md-footer__inner {
+  font-size: 0.78rem;
+}
+.md-footer-meta__topic {
+  font-weight: 600;
+  color: var(--agui-text-muted);
+}
+
+/* ---------- 搜索框 ---------- */
+.md-search__form {
+  border: 1px solid var(--agui-border);
+  border-radius: 0.5rem;
+}
+.md-search__input {
+  font-family: var(--font-body);
+}
+
+/* ---------- 其他 ---------- */
+.md-tabs {
+  border-bottom: 1px solid var(--agui-border-soft);
+}
+.md-tabs__link {
+  font-family: var(--font-body);
+}
+::selection {
+  background: rgba(9, 9, 11, 0.12);
+}
+[data-md-color-scheme="slate"] ::selection {
+  background: rgba(250, 250, 250, 0.2);
+}
+hr {
+  border-color: var(--agui-border-soft);
+}
+.md-content .md-breadcrumbs {
+  font-family: var(--font-body);
+}
+.md-content__button {
+  display: none !important;
+}
