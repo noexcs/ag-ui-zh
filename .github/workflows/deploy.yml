@@ -31,7 +31,9 @@ jobs:
       - name: Build site
         env:
           PYTHONPATH: .
-        run: python -m mkdocs build -f mkdocs.zh.yml
+        run: |
+          python -m mkdocs build -f mkdocs.zh.yml
+          python scripts/inject_header.py
 
       - uses: actions/upload-pages-artifact@v3
         with:
