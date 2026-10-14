@@ -116,12 +116,12 @@ def convert_cards(md):
 
 
 def convert_notes(md):
-    return re.sub(
-        r"<Note>\s*\n(.*?)\n\s*</Note>",
-        lambda m: "::::\n" + m.group(1).strip() + "\n::::\n",
-        md,
-        flags=re.DOTALL,
-    )
+    # python-markdown admonition：!!! type 开头 + 正文缩进 4 格，无闭合行
+    def repl(m):
+        body = "\n".join("    " + ln for ln in m.group(1).strip().splitlines())
+        return "!!! note\n" + body + "\n"
+
+    return re.sub(r"<Note>\s*\n(.*?)\n\s*</Note>", repl, md, flags=re.DOTALL)
 
 
 def process(rel_path):

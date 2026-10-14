@@ -1,5 +1,5 @@
 site_name: AG-UI Protocol 中文文档
-site_description: AG-UI（Agent-User Interaction Protocol）1.0 官方规范简体中文翻译版。AG-UI 是标准化智能体与面向用户应用之间通信的开放协议：一个请求进入，一条有序的类型化事件流输出，承载用户可见的全部智能体行为——文本、工具调用、推理、共享状态与进度。
+site_description: AG-UI（Agent-User Interaction Protocol）官方文档简体中文翻译版：入门指南、核心概念、集成与教程、1.0 规范全文、TypeScript/Python/.NET SDK 参考。AG-UI 是标准化智能体与面向用户应用之间通信的开放协议：一个请求进入，一条有序的类型化事件流输出，承载用户可见的全部智能体行为——文本、工具调用、推理、共享状态与进度。
 repo_url: https://github.com/ag-ui-protocol/ag-ui
 site_url: https://noexcs.github.io/ag-ui-zh/
 edit_uri: ''
@@ -9,39 +9,120 @@ docs_dir: docs-zh
 site_dir: site-zh
 
 nav:
+  - 文档:
+    - 概述: introduction.md
+    - 与 MCP、A2A 的关系: agentic-protocols.md
+    - 入门:
+      - 构建应用: quickstart/applications.md
+      - 构建集成:
+        - 构建集成: quickstart/introduction.md
+        - 服务器: quickstart/server.md
+        - 中间件: quickstart/middleware.md
+      - 构建客户端: quickstart/clients.md
+    - 迁移到 1.0: migrating-to-1-0.md
+    - 生产支持: talk-to-us.md
+    - 概念:
+      - 核心架构: concepts/architecture.md
+      - 事件: concepts/events.md
+      - 智能体: concepts/agents.md
+      - 中间件: concepts/middleware.md
+      - 消息: concepts/messages.md
+      - 元数据: concepts/metadata.md
+      - 推理: concepts/reasoning.md
+      - 状态管理: concepts/state.md
+      - 中断: concepts/interrupts.md
+      - 序列化: concepts/serialization.md
+      - 工具: concepts/tools.md
+      - 子智能体: concepts/subagents.md
+      - 能力: concepts/capabilities.md
+      - 生成式 UI 规范: concepts/generative-ui-specs.md
+    - 集成:
+      - 集成列表: integrations.md
+      - Google ADK JavaScript 快速上手: integrations/google-adk-js.md
+    - 提案:
+      - 提案概览: drafts/overview.md
+      - 生成式用户界面: drafts/generative-ui.md
+      - 元事件: drafts/meta-events.md
+    - 教程:
+      - 使用 Cursor 开发: tutorials/cursor.md
+      - 调试: tutorials/debugging.md
+    - 开发:
+      - 最新动态: development/updates.md
+      - 路线图: development/roadmap.md
+      - 贡献指南: development/contributing.md
+      - AG-UI 支持: support.md
   - 规范:
-    - 规范: 1.0/index.md
-    - 主要变更: 1.0/changelog.md
-    - 架构: 1.0/architecture.md
-  - 基础协议:
-    - 事件模型: 1.0/basic/index.md
-    - 运行输入: 1.0/basic/run-input.md
-    - 元数据: 1.0/basic/metadata.md
-    - 能力: 1.0/basic/capabilities.md
-    - 事件模式:
-      - 事件模式: 1.0/basic/patterns/index.md
-      - 流式消息: 1.0/basic/patterns/streaming.md
-      - 快照与增量: 1.0/basic/patterns/snapshots.md
-      - 中断与恢复: 1.0/basic/patterns/interrupt-resume.md
-    - 传输:
-      - 传输: 1.0/basic/transports/index.md
-      - HTTP + 服务器发送事件: 1.0/basic/transports/http-sse.md
-      - HTTP + Protobuf: 1.0/basic/transports/http-protobuf.md
-    - 处理模型: 1.0/basic/processing.md
-    - 版本与兼容性: 1.0/basic/versioning.md
-  - 事件流:
-    - 事件流: 1.0/events/index.md
-    - 运行与步骤: 1.0/events/lifecycle.md
-    - 文本消息: 1.0/events/text-messages.md
-    - 工具调用: 1.0/events/tool-calls.md
-    - 推理: 1.0/events/reasoning.md
-    - 状态: 1.0/events/state.md
-    - 活动: 1.0/events/activity.md
-    - 子智能体: 1.0/events/subagents.md
-    - 原始与自定义事件: 1.0/events/passthrough.md
-  - 参考:
-    - Schema 文件: 1.0/schema-files.md
-    - Schema 参考: 1.0/schema.md
+    - 规范:
+      - 规范: 1.0/index.md
+      - 主要变更: 1.0/changelog.md
+      - 架构: 1.0/architecture.md
+    - 基础协议:
+      - 事件模型: 1.0/basic/index.md
+      - 运行输入: 1.0/basic/run-input.md
+      - 元数据: 1.0/basic/metadata.md
+      - 能力: 1.0/basic/capabilities.md
+      - 事件模式:
+        - 事件模式: 1.0/basic/patterns/index.md
+        - 流式消息: 1.0/basic/patterns/streaming.md
+        - 快照与增量: 1.0/basic/patterns/snapshots.md
+        - 中断与恢复: 1.0/basic/patterns/interrupt-resume.md
+      - 传输:
+        - 传输: 1.0/basic/transports/index.md
+        - HTTP + 服务器发送事件: 1.0/basic/transports/http-sse.md
+        - HTTP + Protobuf: 1.0/basic/transports/http-protobuf.md
+      - 处理模型: 1.0/basic/processing.md
+      - 版本与兼容性: 1.0/basic/versioning.md
+    - 事件流:
+      - 事件流: 1.0/events/index.md
+      - 运行与步骤: 1.0/events/lifecycle.md
+      - 文本消息: 1.0/events/text-messages.md
+      - 工具调用: 1.0/events/tool-calls.md
+      - 推理: 1.0/events/reasoning.md
+      - 状态: 1.0/events/state.md
+      - 活动: 1.0/events/activity.md
+      - 子智能体: 1.0/events/subagents.md
+      - 原始与自定义事件: 1.0/events/passthrough.md
+    - 参考:
+      - Schema 文件: 1.0/schema-files.md
+      - Schema 参考: 1.0/schema.md
+  - SDK:
+    - TypeScript:
+      - "@ag-ui/core":
+        - 概览: sdk/js/core/overview.md
+        - 类型: sdk/js/core/types.md
+        - 多模态输入: sdk/js/core/multimodal-inputs.md
+        - 事件: sdk/js/core/events.md
+      - "@ag-ui/client":
+        - 概览: sdk/js/client/overview.md
+        - AbstractAgent: sdk/js/client/abstract-agent.md
+        - HttpAgent: sdk/js/client/http-agent.md
+        - 中间件: sdk/js/client/middleware.md
+        - AgentSubscriber: sdk/js/client/subscriber.md
+        - 流压缩: sdk/js/client/compaction.md
+      - "@ag-ui/encoder": sdk/js/encoder.md
+      - "@ag-ui/proto": sdk/js/proto.md
+    - Python:
+      - ag_ui.core:
+        - 概览: sdk/python/core/overview.md
+        - 类型: sdk/python/core/types.md
+        - 多模态输入: sdk/python/core/multimodal-inputs.md
+        - 事件: sdk/python/core/events.md
+      - ag_ui.encoder:
+        - 概览: sdk/python/encoder/overview.md
+    - .NET:
+      - AGUI.Abstractions:
+        - 概览: sdk/dotnet/abstractions/overview.md
+        - 类型: sdk/dotnet/abstractions/types.md
+        - 事件: sdk/dotnet/abstractions/events.md
+        - 多模态输入: sdk/dotnet/abstractions/multimodal-inputs.md
+      - AGUI.Client:
+        - 概览: sdk/dotnet/client/overview.md
+        - AGUIChatClient: sdk/dotnet/client/chat-client.md
+        - 传输: sdk/dotnet/client/transport.md
+      - AGUI.Server:
+        - 概览: sdk/dotnet/hosting/overview.md
+        - 端点: sdk/dotnet/hosting/endpoints.md
+        - 可扩展性: sdk/dotnet/hosting/extensibility.md
 
 theme:
   name: material

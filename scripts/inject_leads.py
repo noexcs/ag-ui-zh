@@ -28,7 +28,7 @@ def main():
             if not m:
                 continue
             fm = m.group(1)
-            dm = re.search(r'^description:\s*"(.*)"\s*$', fm, re.MULTILINE)
+            dm = re.search(r'^description:\s*"?([^"\n]+?)"?\s*$', fm, re.MULTILINE)
             if not dm:
                 continue
             desc = dm.group(1).strip()

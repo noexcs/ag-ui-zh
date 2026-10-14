@@ -2,6 +2,7 @@
 title: "Schema 参考"
 description: "1.0 Schema 的全部定义，每个一个锚点 —— 生成页面，请勿手改"
 ---
+<em class="lead">1.0 Schema 的全部定义，每个一个锚点 —— 生成页面，请勿手改</em>
 
 <!-- 本页由 schema.json 生成 — 请勿手改；修改 schema 后重新生成 -->
 
